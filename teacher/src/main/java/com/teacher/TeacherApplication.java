@@ -1,13 +1,13 @@
-package com.tao.springcloud;
+package com.teacher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class SpringCloudApplication {
+public class TeacherApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudApplication.class, args);
+        SpringApplication.run(TeacherApplication.class,args);
     }
-
 }

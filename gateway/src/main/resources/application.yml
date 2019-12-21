@@ -1,10 +1,14 @@
 server:
-  port: 8888
+  port: 8002
 eureka:
   client:
-    register-with-eureka: false
     service-url:
       defaultZone: http://localhost:8888/eureka/
+  instance:
+    prefer-ip-address: true
 spring:
   application:
-    name: eureka
+    name: gateway
+zuul:
+  routes:
+    teacher: /t/**
