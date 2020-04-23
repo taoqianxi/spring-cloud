@@ -1,0 +1,22 @@
+server:
+  port: 8006
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/taoqianxi/config.git
+          username: taoqianxi
+          password: qq2270119033
+          default-label: master
+        overrides:
+          foo: bar
+      fail-fast: true

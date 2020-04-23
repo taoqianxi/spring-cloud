@@ -1,0 +1,31 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka/
+  instance: #注册ip到注册中心
+    prefer-ip-address: true
+server:
+  port: 8001
+spring:
+  application:
+    name: teacher
+  sleuth:
+    web:
+      client:
+        enabled: true #设置请求跟踪
+    sampler:
+      probability: 1.0 #设置采样比例
+  zipkin:
+    service:
+      name: zipkin  #服务器地址
+  cloud:
+    config:
+      discovery:
+        enabled: true #是否可以扫描
+        service-id: config
+      label: master
+      profile: dev
+  redis:
+    port: 6000
+    host: 47.111.91.155
+#      通过 application。name + profiles.active 查找配置文件
