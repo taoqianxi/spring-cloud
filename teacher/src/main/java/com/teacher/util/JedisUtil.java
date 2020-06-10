@@ -1,13 +1,17 @@
 package com.teacher.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-import redis.clients.jedis.Jedis;
 
 @Component
 public class JedisUtil {
-
     @Autowired
-    private Jedis jedis;
+    private RedisTemplate<String,String> redisTemplate;
+
+    public void get(){
+        redisTemplate.opsForValue().set("k1","v1");
+        System.out.println(redisTemplate.opsForValue().get("k1"));
+    }
 
 }

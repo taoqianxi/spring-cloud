@@ -14,6 +14,7 @@ public class RestTemplateController {
 
     @Autowired
     private RestTemplate restTemplate;
+
     @GetMapping("consumers")
     public List<Student> studentList(){
         return restTemplate.getForEntity("http://teacher:8001/student/all",List.class).getBody();
