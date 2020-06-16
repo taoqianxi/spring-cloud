@@ -17,15 +17,16 @@ public class Publisher {
     }
 
     public static void main(String[] args) throws Exception {
+        String exchangeName = "exchangeDirect";
         Connection connection = getConnection();
         //创建管道
         Channel channel = connection.createChannel();
         //创建对列
-        channel.queueDeclare("testQueue",false,false,false,null);
+        channel.queueDeclare(exchangeName,false,false,false,null);
         //消息内容
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             String message = "Hello World" + i;
-            channel.basicPublish("","testQueue",null,message.getBytes());
+            channel.basicPublish("",exchangeName,null,message.getBytes());
         }
         channel.close();
         connection.close();

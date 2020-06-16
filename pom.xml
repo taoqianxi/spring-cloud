@@ -13,6 +13,8 @@
         <module>zipkin</module>
         <module>rabbitMq</module>
         <module>oss</module>
+        <module>helloworld</module>
+        <module>utils</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

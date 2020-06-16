@@ -10,11 +10,10 @@ public class Consumer1 {
         Connection connection = Publisher.getConnection();
         Channel channel = connection.createChannel();
         //声明通道
-        channel.queueDeclare("testQueue",false,false,false,null);
+        channel.queueDeclare("exchangeDirect",false,false,false,null);
         //定义消费者
         QueueingConsumer consumer = new QueueingConsumer(channel);
-        channel.basicConsume("testQueue",true,consumer);
-
+        channel.basicConsume("exchangeDirect",true,consumer);
         while(true){
             //这个方法会阻塞住，直到获取到消息
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();

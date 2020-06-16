@@ -14,13 +14,15 @@ public class Consumer {
 
         //定义消费者
         QueueingConsumer consumer = new QueueingConsumer(channel);
-        channel.basicConsume("testQueue",true,consumer);
+        channel.basicConsume("testQueue",false,consumer); // true 自动确认,false 手动确认
 
         while(true){
             //这个方法会阻塞住，直到获取到消息
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();
             String message = new String(delivery.getBody());
             System.out.println("接收到消息："+message);
+            Thread.sleep(100);
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         }
 
     }
